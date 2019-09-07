@@ -167,7 +167,7 @@ namespace FineUICoder
         Regex regParentheses = new Regex(@"\([^\(\)]*\)");
         public class SpaceParam
         {
-            int _Razor = 0;
+            //int _Razor = 0;
 
             public int Razor = 0;
             //{
