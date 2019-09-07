@@ -31,6 +31,11 @@ namespace FineUICoder
                 SpaceParam sp = new SpaceParam();
                 string line = CheckLine(lines[i], sp);
                 spBase.Razor += sp.Razor;
+                if (spBase.Razor == 0)
+                {
+                    result[i] = lines[i];
+                    continue;
+                }
                 int backcount = 0;
                 if (spBase.MemoLeft > 0 && sp.MemoRight > 0 && sp.FirstMemo) backcount--;
                 if (spBase.MemoLeft == 0 && sp.ParenthesisRight > 0 && sp.FirstParenthesis) backcount--;
@@ -44,6 +49,13 @@ namespace FineUICoder
                     spBase.ParenthesisLeft -= sp.ParenthesisRight;
                 }
                 spBase.MemoLeft -= sp.MemoRight;
+                if (spBase.ParenthesisLeft < 0)
+                {
+                    spBase.Razor += spBase.ParenthesisLeft;
+                    if (spBase.Razor < 0)
+                        spBase.Razor = 0;
+                    spBase.ParenthesisLeft = 0;
+                }
             }
             return result;
         }
@@ -157,16 +169,16 @@ namespace FineUICoder
         {
             int _Razor = 0;
 
-            public int Razor
-            {
-                get { return _Razor; }
-                set
-                {
-                    _Razor = value;
-                    if (_Razor < 0)
-                        _Razor = 0;
-                }
-            }
+            public int Razor = 0;
+            //{
+            //    get { return _Razor; }
+            //    set
+            //    {
+            //        _Razor = value;
+            //        if (_Razor < 0)
+            //            _Razor = 0;
+            //    }
+            //}
 
             public int MemoLeft = 0;
             public int MemoRight = 0;

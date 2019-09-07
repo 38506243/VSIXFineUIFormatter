@@ -136,6 +136,24 @@ f.tt() //memo small
 ,f.yy())//多一个)
 )
 )
-))//全文多3个) </value>
+))//全文多3个) 
+
+&lt;script&gt;
+        function fun1(value, params) {
+            return F.ui.tt.getTextByValue(value);
+        }
+
+        function doPostBackReBindGrid(event) {
+            var grid1 = F.ui.Grid1;
+            // 触发后台事件
+            F.doPostBack('@Url.Action("Grid1_PageIndexChanged")','Form1', {
+                fields: grid1.fields,
+                pageIndex: grid1.pageIndex,
+                pageSize: F.ui.ddlPageSize.getValue()
+            });
+
+        }
+
+		&lt;/script&gt;</value>
   </data>
 </root>

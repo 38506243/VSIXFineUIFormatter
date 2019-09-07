@@ -17,3 +17,20 @@ f.tt() //memo small
 )
 )
 ))//全文多3个) 
+<script>
+        function fun1(value, params) {
+            return F.ui.tt.getTextByValue(value);
+        }
+
+        function doPostBackReBindGrid(event) {
+            var grid1 = F.ui.Grid1;
+            // 触发后台事件
+            F.doPostBack('@Url.Action("Grid1_PageIndexChanged")','Form1', {
+                fields: grid1.fields,
+                pageIndex: grid1.pageIndex,
+                pageSize: F.ui.ddlPageSize.getValue()
+            });
+
+        }
+
+		</script>
