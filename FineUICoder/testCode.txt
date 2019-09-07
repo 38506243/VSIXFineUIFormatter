@@ -1,0 +1,19 @@
+﻿@(F.void().bool(true)
+.string("s1").string2("\"((")
+.func/*me()(mo1*/tion1("中yin1文").func2( //sssss
+F.obj1()..fun1("p1","p2",p3).func3(/*as
+*m1 m2(
+m3)
+((
+))
+safd()
+*/
+param
+)
+.columns(
+f.button(),
+f.tt() //memo small
+,f.yy())//多一个)
+)
+)
+))//全文多3个) 
