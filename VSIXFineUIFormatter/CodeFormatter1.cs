@@ -97,14 +97,17 @@ namespace VSIXFineUIFormatter
 
             {
                 var selection = (TextSelection)dte.ActiveDocument.Selection;
-                selection.SelectAll();//全选
+                //selection.SelectAll();//全选
                 string text = selection.Text;
-                FineUICoder.FineUI_cshtml coder = new FineUICoder.FineUI_cshtml();
-                var codeFormated = coder.Format(text);
-                //这种更新会导致在vs中逐个字符更新，超级慢，因此先清空再插入
-                //selection.Text = codeFormated;
-                selection.Text = "";
-                selection.Insert(codeFormated);
+                if (!string.IsNullOrWhiteSpace(text))
+                {
+                    FineUICoder.FineUI_cshtml coder = new FineUICoder.FineUI_cshtml();
+                    var codeFormated = coder.Format(text);
+                    //这种更新会导致在vs中逐个字符更新，超级慢，因此先清空再插入
+                    //selection.Text = codeFormated;
+                    selection.Text = "";
+                    selection.Insert(codeFormated);
+                }
             }
         }
         void MessageBox1(string text, string title)

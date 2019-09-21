@@ -30,6 +30,7 @@ namespace FineUICoder
             {
                 SpaceParam sp = new SpaceParam();
                 string line = CheckLine(lines[i], sp);
+                int addRazor = sp.Razor;
                 spBase.Razor += sp.Razor;
                 if (spBase.Razor == 0)
                 {
@@ -40,7 +41,10 @@ namespace FineUICoder
                 if (spBase.MemoLeft > 0 && sp.MemoRight > 0 && sp.FirstMemo) backcount--;
                 if (spBase.MemoLeft == 0 && sp.ParenthesisRight > 0 && sp.FirstParenthesis) backcount--;
 
-                result[i] = GetSpaces(spBase.Razor + spBase.ParenthesisLeft + spBase.MemoLeft + backcount) + line;
+                if (addRazor > 0)
+                    result[i] = GetSpaces(spBase.Razor * 2 - addRazor + spBase.ParenthesisLeft + spBase.MemoLeft + backcount) + line;
+                else
+                    result[i] = GetSpaces(spBase.Razor * 2 + spBase.ParenthesisLeft + spBase.MemoLeft + backcount) + line;
 
                 if (spBase.MemoLeft == 0)
                 {
